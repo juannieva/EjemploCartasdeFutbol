@@ -1,0 +1,58 @@
+﻿
+@{
+    ViewBag.Title = "Ver Cartas";
+}
+<div class="container-fluid">
+    <div class=" row-cols-md-4 g-4 p-1 row row-cols-2 g-4 p-1">
+        @foreach (var i in (List<Servicios.CartaModel>)ViewBag.Cartas)
+        {
+            if (i.active == 1) { 
+            <div class="col">
+                <div id="noseleccionable" class=" bordeCarta card border-@i.colorRareza " style="max-width: 18rem;">
+                    <div class=" card-header bg-@i.colorRareza text-white  text-uppercase fw-bold">
+                        @i.rareza
+                    </div>
+                    <img src="@i.urlImagen" class="card-img-top" alt="@i.nombre+" "+@i.apellido" border="0">
+                    
+                    <div class="card-img-overlay">
+                        <form action="" method="post">
+                            <div class="dropdown position-absolute top-0 end-0">
+                                <button class="btn btn-sm btn-default dropdown-toggle " id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"></button>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                    <li><input type="submit" name="submitButton" value="Editar"   class="dropdown-item"/></li>
+                                    <li><input type="submit" name="submitButton" class="dropdown-item" value="Eliminar"/>
+                                        <input type="hidden" id="postId" name="postId" value=@i.id></li>
+                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                </ul>
+
+                            </div>
+                        </form>
+                        <p class="small"><br /></p>
+                        <h6 class="card-text text-white font-weight-light small ">
+                            @*Controla si la carta tiene una coleccion cargada, si la tiene la muestra en un overlay sobre la foto del jugador*@
+                            @if (i.colecciones.Count() > 0)
+                            {
+                                foreach (var j in i.colecciones)
+                                {
+                                    @j.descripcionColeccion<br />
+                                }
+                            }
+                        </h6>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">@i.nombre @i.apellido</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">@i.rolJugador</h6>
+                        <p class="card-text">Nacionalidad: @i.nacionalidad <br>Equipo: @i.equipo</p>
+                    </div>
+                    <div class="card-footer text-white bg-@i.colorRareza fw-bold  text-uppercase text-sm-end">
+                        Serie @i.serie
+                    </div>
+                </div>
+            </div>
+            }
+        }
+    </div>
+</div>
+
+
+

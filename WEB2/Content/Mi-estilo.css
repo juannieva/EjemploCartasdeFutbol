@@ -1,0 +1,12 @@
+﻿#noseleccionable {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+
+.bordeCarta {
+    border: solid;
+    border-width: 0px 3px 0px 3px;
+}

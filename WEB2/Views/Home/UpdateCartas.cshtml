@@ -1,0 +1,56 @@
+﻿@model InsertCartaModel
+@{
+    ViewBag.Title = "Actualizar Carta";
+}
+
+@using (Html.BeginForm("UpdateCartas", "Home", FormMethod.Post))
+{
+
+    <div>
+        @Html.Label("Coleccion")
+        <div>
+            @Html.DropDownList("DDColecciones", (List<SelectListItem>)ViewBag.listaOpciones.colecciones, new { @class = "form-control", @multiple = "multiple" })
+        </div>
+    </div>
+    <div>
+        @Html.LabelFor(Model => Model.idJugador)
+        <div>
+            @Html.DropDownListFor(model => model.idJugador, (List<SelectListItem>)ViewBag.listaOpciones.jugadores, new { @class = "form-control" })
+            @Html.ValidationMessageFor(Model => Model.idJugador, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div>
+        @Html.LabelFor(Model => Model.idSerie)
+        <div>
+            @Html.DropDownListFor(model => model.idSerie, (List<SelectListItem>)ViewBag.listaOpciones.series, new { @class = "form-control", id="DDseries"})
+            @Html.ValidationMessageFor(Model => Model.idSerie, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div>
+        @Html.LabelFor(Model => Model.idRareza)
+        <div>
+            @Html.DropDownListFor(model => model.idRareza, (List<SelectListItem>)ViewBag.listaOpciones.rarezas, new { @class = "form-control" })
+            @Html.ValidationMessageFor(Model => Model.idRareza, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <input type="submit" value="Aceptar" />
+    <input type="hidden" id="postId" name="postId" value=@ViewBag.id>
+}
+@section Styles{
+    @Styles.Render("~/Content/select2")
+    <style>
+        .grid-container {
+            display:grid;
+        }
+    </style>
+}
+
+@section Scripts {
+    @Scripts.Render("~/Scripts/select2")
+    @Scripts.Render("~/Scripts/MyScript")
+
+    
+
+}

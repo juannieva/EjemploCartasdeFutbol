@@ -1,0 +1,76 @@
+﻿@model InsertCartaModel
+
+@{
+    ViewBag.Title = "Agregar Carta";
+}
+
+
+@using (Html.BeginForm("AddCard", "Home", FormMethod.Post))
+{
+    @*@Html.AntiForgeryToken()*@
+
+    <div>
+        @Html.Label("Coleccion")
+        <div>
+            @Html.DropDownList("DDColecciones", (List<SelectListItem>)ViewBag.listaOpciones.colecciones, new { @class = "form-control", @multiple = "multiple" })
+        </div>
+    </div>
+
+    <div>
+        @Html.LabelFor(Model => Model.idJugador)
+        <div>
+            @Html.DropDownListFor(model => model.idJugador, (List<SelectListItem>)ViewBag.listaOpciones.jugadores, "-- SELECCIONE --", new { @class = "form-control", id = "DDJugadores" })
+            @Html.ValidationMessageFor(Model => Model.idJugador, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div>
+        @Html.LabelFor(Model => Model.idSerie)
+        <div>
+            @Html.DropDownListFor(model => model.idSerie, (List<SelectListItem>)ViewBag.listaOpciones.series, "-- SELECCIONE --", new { @class = "form-control", id = "DDSeries" })
+            @Html.ValidationMessageFor(Model => Model.idSerie, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div>
+        @Html.LabelFor(Model => Model.idRareza)
+        <div>
+            @Html.DropDownListFor(model => model.idRareza, (List<SelectListItem>)ViewBag.listaOpciones.rarezas, "-- SELECCIONE --", new { @class = "form-control" })
+            @Html.ValidationMessageFor(Model => Model.idRareza, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <input type="submit" value="Aceptar" />
+}
+
+@section Styles{
+    @Styles.Render("~/Content/select2")
+}
+
+@section Scripts {
+    @Scripts.Render("~/Scripts/select2")
+    @Scripts.Render("~/Scripts/jquery-unobtrusive")
+    @Scripts.Render("~/Scripts/MyScript")
+    <script>
+     $(document).ready(function () {
+        $(function () {
+            $("#DDSeries").change(function () {
+                var url = "@Url.Action("ActualizarJugadoresSeries","Home")";
+                var primeraOpcion = $("#DDJugadores option:first-child");
+                var data = { codigo: $(this).find('option:selected').text() };
+                $.get(url, data).done(function (data) {
+                    var content = JSON.parse(data);
+                    $("#DDJugadores").empty().append(primeraOpcion);
+                    $.each(content, function (id, el) {
+                        $("#DDJugadores").append(new Option(el.Text, el.Value));
+                    });
+                }).fail(manejarErrores);
+            })
+
+        })
+
+
+    })
+    </script>
+}
+

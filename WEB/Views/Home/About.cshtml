@@ -1,0 +1,122 @@
+﻿@model List<Servicios.CartaModel>
+@*@model ENTIDADES.Carta*@
+
+@{
+    ViewBag.Title = "About";
+}
+<h2>@ViewBag.Title.</h2>
+<h3>@ViewBag.Message</h3>
+
+<p>Use this area to provide additional information.</p>
+<a href="~/Home/VerCartas" class="btn btn-primary" role="button">BotonS</a>
+
+<div class="card-group row row-cols-1 row-cols-md-2 g-4">
+    @foreach (var i in Model)
+    {
+        <div class="col">
+            <div class="card border-primary mb-3" style="max-width: 18rem;">
+                <img src="@i.urlImagen" class="card-img-top" alt="@i.nombre+" "+@i.apellido" border="0">
+                <div class="card-body">
+                    <h5 class="card-title">@i.nombre @i.apellido</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">@i.rolJugador</h6>
+                    <p class="card-text">Nacionalidad: @i.nacionalidad</p>
+                    <p class="card-text">Equipo: @i.equipo</p>
+
+
+
+                </div>
+            </div>
+        </div>
+     }
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        @*<table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Serie</th>
+                        <th>Rareza</th>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>Rol Jugador</th>
+                        <th>Equipo</th>
+                        <th>Nacionalidad</th>
+                    </tr>
+
+                </thead>
+                <tbody>
+                    @foreach (var i in Model)
+                    {
+                        <tr>
+                            <td>
+                                @i.serie
+                            </td>
+                            <td>
+                                @i.rareza
+                            </td>
+                            <td>
+                                @i.nombre
+                            </td>
+                            <td>
+                                @i.apellido
+                            </td>
+                            <td>
+                                @i.rolJugador
+                            </td>
+                            <td>
+                                @i.equipo
+                            </td>
+                            <td>
+                                @i.nacionalidad
+                            </td>
+                        </tr>
+                    }
+
+
+                </tbody>
+            </table>*@
+
+
+        @*<tr>
+                <td>
+                    @Model.idSerie
+                </td>
+                <td>
+                    @Model.descripcionRareza
+                </td>
+                <td>
+                    @Model.nombre
+                </td>
+                <td>
+                    @Model.apellido
+                </td>
+                <td>
+                    @Model.descripcionRolJugador
+                </td>
+                <td>
+                    @Model.nombreEquipo
+                </td>
+                <td>
+                    @Model.descripcionNacionalidad
+                </td>
+                <td>
+                    @Model.active
+                </td>
+            </tr>*@
+

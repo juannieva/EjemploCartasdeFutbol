@@ -1,0 +1,7 @@
+D:\Proyectos\DESAFIO\ENTIDADES\bin\Debug\ENTIDADES.dll.config
+D:\Proyectos\DESAFIO\ENTIDADES\bin\Debug\ENTIDADES.dll
+D:\Proyectos\DESAFIO\ENTIDADES\bin\Debug\ENTIDADES.pdb
+D:\Proyectos\DESAFIO\ENTIDADES\obj\Debug\ENTIDADES.csproj.CoreCompileInputs.cache
+D:\Proyectos\DESAFIO\ENTIDADES\obj\Debug\ENTIDADES.dll
+D:\Proyectos\DESAFIO\ENTIDADES\obj\Debug\ENTIDADES.pdb
+D:\Proyectos\DESAFIO\ENTIDADES\obj\Debug\ENTIDADES.csproj.AssemblyReference.cache
